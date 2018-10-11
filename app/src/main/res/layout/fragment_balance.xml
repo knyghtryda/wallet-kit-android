@@ -82,5 +82,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastBlockTitle"
         />
+    <Button
+        android:id="@+id/buttonGenerate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Generate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStart"
+        />
 
 </android.support.constraint.ConstraintLayout>

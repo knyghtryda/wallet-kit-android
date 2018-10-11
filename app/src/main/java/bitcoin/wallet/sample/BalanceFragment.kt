@@ -9,13 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.*
 
-class BalanceFragment : Fragment() {
+class BalanceFragment : Fragment(), AnkoLogger {
 
     lateinit var viewModel: MainViewModel
     lateinit var balanceValue: TextView
     lateinit var lastBlockValue: TextView
     lateinit var startButton: Button
+    lateinit var generateButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +58,15 @@ class BalanceFragment : Fragment() {
         balanceValue = view.findViewById(R.id.balanceValue)
         lastBlockValue = view.findViewById(R.id.lastBlockValue)
         startButton = view.findViewById(R.id.buttonStart)
+        generateButton = view.findViewById(R.id.buttonGenerate)
 
         startButton.setOnClickListener {
             viewModel.start()
+        }
+
+        generateButton.setOnClickListener {
+            viewModel.generateNewMnemonic()
+            toast(viewModel.getWords().joinToString(separator = " ") + " " + viewModel.receiveAddress())
         }
     }
 }
